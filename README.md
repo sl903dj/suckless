@@ -1,5 +1,5 @@
 # suckless
-个人自用dwm slstatus配置
+个人自用dmenu dwm slock slstatus st配置
 
 ## slock troubleshooting
 If you get this error `slock: getgrnam nogroup: group entry not found`, then you might want to apply this:
