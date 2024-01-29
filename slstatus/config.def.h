@@ -68,7 +68,8 @@ static const struct arg args[] = {
 	/*{ ipv4, " 󰩟 %s |", "wlp0s20f3" },
 	{ netspeed_rx, " 󰛴 %s |", "wlp0s20f3" },
 	{ netspeed_tx, " 󰛶 %s |", "wlp0s20f3" },*/
-        { ram_perc, " 󰍛 %s% |", NULL },
+	{ disk_free, " 󰨣 %s |", "/" },
+	{ ram_perc, " 󰍛 %s% |", NULL },
         { cpu_perc, " 󰻠 %s% |", NULL },
 	/*{ swap_perc, "   %s% |", NULL },
         { load_avg, " 󰝲 %s |", NULL },
