@@ -14,7 +14,7 @@ static const int showsystray             = 1;   /* 0 means no systray */
 static const char *fonts[]          = { "Hack Nerd Font:style=Regular:size=10:antialias=true:autohint=true",
                                         "WenQuanYi Micro Hei:style=Regular:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hack Nerd Font:style=Regular:size=10";
-static const char col_gray1[]       = "#333333"; /* systray栏颜色 */
+static const char col_gray1[]       = "#333333"; /* topbar颜色 */
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
@@ -73,7 +73,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/bash", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -90,7 +90,7 @@ static const char *inclight[] = { "light", "-A", "10", NULL };
 static const char *declight[] = { "light", "-U", "10", NULL };
 static const char *screenshot[] = { "flameshot", "gui", NULL };
 static const char *delayedscreenshot[] = { "flameshot", "gui", "-d", "2000", NULL };
-static const char *screenlock[] = { "slock", NULL };
+//static const char *screenlock[] = { "slock", NULL };
 
 #include "movestack.c"
 static const Key keys[] = {
@@ -103,7 +103,8 @@ static const Key keys[] = {
 	{ 0,			        XK_Print,  spawn,	   {.v = screenshot} },
 	{ Mod1Mask|ShiftMask,		XK_a,      spawn,	   {.v = screenshot} },
 	{ Mod1Mask|ShiftMask,		XK_d,      spawn,	   {.v = delayedscreenshot} },
-	{ MODKEY|ShiftMask,		XK_l,      spawn,	   {.v = screenlock} },
+//	{ MODKEY|ShiftMask,		XK_l,      spawn,	   {.v = screenlock} },/
+	{ MODKEY|ShiftMask,		XK_l,      spawn,	   SHCMD("/home/xiaosu/suckless/dwm/scripts/lock.sh") },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fsearchcmd} },

@@ -8,3 +8,4 @@ sed -i 's|static const char \*group = "nogroup";|static const char *group = "nob
 sed -ri 's/((CPP|C|LD)FLAGS) =/\1 +=/g' config.mk
 
 ``` 
+## 使用i3lock需要安装`i3lock-color`
