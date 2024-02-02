@@ -78,5 +78,5 @@ static const struct arg args[] = {
 	{ vol_perc, " 󰕾 %s% |", "/dev/mixer" },
         /*{ temp, " 󰏈 %sC |", "/sys/class/thermal/thermal_zone0/temp" },*/
         { battery_perc,  " 󰂄 %s% |", "BAT0" },
-	{ datetime, " %s",           "%F %T" },
+	{ datetime, " %s",           "%F %a %T" },
 };
