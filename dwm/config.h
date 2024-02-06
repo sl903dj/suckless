@@ -14,11 +14,11 @@ static const int showsystray             = 1;   /* 0 means no systray */
 static const char *fonts[]          = { "Hack Nerd Font:style=Regular:size=10:antialias=true:autohint=true",
                                         "WenQuanYi Micro Hei:style=Regular:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hack Nerd Font:style=Regular:size=10";
-static const char col_gray1[]       = "#333333"; /* topbar颜色 */
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#333333"; /* 状态条底色 */
+static const char col_gray2[]       = "#444444"; /* 当static const unsigned int borderpx不为0时，非活动窗口外边框颜色 */
+static const char col_gray3[]       = "#bbbbbb"; /* 当前非活动的title字体颜色 */
+static const char col_gray4[]       = "#eeeeee"; /* 当前活动的title字体颜色 */
+static const char col_cyan[]        = "#005577"; /* title底色 */
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
