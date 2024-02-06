@@ -103,7 +103,7 @@ static const Key keys[] = {
 	{ 0,			        XK_Print,  spawn,	   {.v = screenshot} },
 	{ Mod1Mask|ShiftMask,		XK_a,      spawn,	   {.v = screenshot} },
 	{ Mod1Mask|ShiftMask,		XK_d,      spawn,	   {.v = delayedscreenshot} },
-//	{ MODKEY|ShiftMask,		XK_l,      spawn,	   {.v = screenlock} },/
+//	{ MODKEY|ShiftMask,		XK_l,      spawn,	   {.v = screenlock} },
 	{ MODKEY|ShiftMask,		XK_l,      spawn,	   SHCMD("/home/xiaosu/suckless/dwm/scripts/lock.sh") },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
