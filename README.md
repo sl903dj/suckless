@@ -16,3 +16,4 @@ pacman -S i3lock-color
 ```shell
 chmod 755 lock.sh
 ```
+i3lock主题配置文件fork自gxt_kt<https://github.com/gxt-kt/dwm/blob/master/i3lock/lock.sh>
