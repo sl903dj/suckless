@@ -6,8 +6,8 @@ static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 2;        /* vertical padding of bar */
-static const int sidepad            = 2;        /* horizontal padding of bar */
+static const int vertpad            = 0;        /* vertical padding of bar */
+static const int sidepad            = 0;        /* horizontal padding of bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -16,13 +16,13 @@ static const int showsystray             = 1;   /* 0 means no systray */
 static const char *fonts[]          = { "Hack Nerd Font:style=Regular:size=10:antialias=true:autohint=true",
                                         "WenQuanYi Micro Hei:style=Regular:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hack Nerd Font:style=Regular:size=10";
-static const char col_gray1[]       = "#333333"; /* 状态条底色 */
+static const char col_gray1[]       = "#000000"; /* 状态条底色 */
 static const char col_gray2[]       = "#444444"; /* 当static const unsigned int borderpx不为0时，非活动窗口外边框颜色 */
-static const char col_gray3[]       = "#bbbbbb"; /* 当前非活动的title字体颜色 */
-static const char col_gray4[]       = "#eeeeee"; /* 当前活动的title字体颜色 */
+static const char col_gray3[]       = "#333333"; /* 当前非活动的title字体颜色 */
+static const char col_gray4[]       = "#195240"; /* 当前活动的title字体颜色 */
 static const char col_cyan[]        = "#005577"; /* title底色 */
-static const unsigned int baralpha = 0xd0;
-static const unsigned int borderalpha = OPAQUE;
+static const unsigned int baralpha = 0x0;       /* 状态栏透明度 */
+static const unsigned int borderalpha = OPAQUE;  /* 边框透明度 */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
