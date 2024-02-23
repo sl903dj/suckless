@@ -149,6 +149,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} }, //快速按两次，关闭dwm
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, //重启dwm
+	{ MODKEY,                       XK_o,      winview,        {0} },
 };
 
 /* button definitions */
