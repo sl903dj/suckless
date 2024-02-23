@@ -19,7 +19,7 @@ static const char dmenufont[]       = "Hack Nerd Font:style=Regular:size=10";
 static const char col_gray1[]       = "#000000"; /* 状态条底色 */
 static const char col_gray2[]       = "#444444"; /* 当static const unsigned int borderpx不为0时，非活动窗口外边框颜色 */
 static const char col_gray3[]       = "#333333"; /* 当前非活动的title字体颜色 */
-static const char col_gray4[]       = "#195240"; /* 当前活动的title字体颜色 */
+static const char col_gray4[]       = "#111111"; /* 当前活动的title字体颜色 */
 static const char col_cyan[]        = "#005577"; /* title底色 */
 static const unsigned int baralpha = 0x46;       /* 状态栏透明度 */
 static const unsigned int borderalpha = OPAQUE;  /* 边框透明度 */
@@ -36,7 +36,7 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 //static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "", "", "󱋊", "", "󰕧", "󰎈", "", "", "󰬷" };
+static const char *tags[] = { "󰣇", "", "󰘑", "󰈙", "󰕧", "󰎈", "󰅩", "", "󰬷" };
 
 /* Lockfile */
 static char lockfile[] = "/tmp/dwm.lock";
@@ -79,7 +79,6 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "rofi", "-combi-modi", "window,drun,run,ssh", "-font", "hack 22", "-show", "combi", "-icon-theme", "Papirus","-show-icons", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *fsearchcmd[]  = { "fsearch", "gui", NULL };
@@ -92,7 +91,7 @@ static const char *inclight[] = { "light", "-A", "10", NULL };
 static const char *declight[] = { "light", "-U", "10", NULL };
 static const char *screenshot[] = { "flameshot", "gui", NULL };
 static const char *delayedscreenshot[] = { "flameshot", "gui", "-d", "2000", NULL };
-//static const char *screenlock[] = { "slock", NULL };
+static const char *screenlock[] = { "/home/xiaosu/suckless/dwm/scripts/lock.sh", NULL };
 
 #include "movestack.c"
 static const Key keys[] = {
@@ -105,8 +104,7 @@ static const Key keys[] = {
 	{ 0,			        XK_Print,  spawn,	   {.v = screenshot} },
 	{ Mod1Mask|ShiftMask,		XK_a,      spawn,	   {.v = screenshot} },
 	{ Mod1Mask|ShiftMask,		XK_d,      spawn,	   {.v = delayedscreenshot} },
-//	{ MODKEY|ShiftMask,		XK_l,      spawn,	   {.v = screenlock} },
-	{ MODKEY|ShiftMask,		XK_l,      spawn,	   SHCMD("/home/xiaosu/suckless/dwm/scripts/lock.sh") },
+	{ MODKEY|ShiftMask,		XK_l,      spawn,	   {.v = screenlock} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fsearchcmd} },
@@ -149,6 +147,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} }, //快速按两次，关闭dwm
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, //重启dwm
+	{ MODKEY,                       XK_o,      winview,        {0} },
 };
 
 /* button definitions */
