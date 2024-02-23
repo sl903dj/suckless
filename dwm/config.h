@@ -21,7 +21,7 @@ static const char col_gray2[]       = "#444444"; /* 当static const unsigned int
 static const char col_gray3[]       = "#333333"; /* 当前非活动的title字体颜色 */
 static const char col_gray4[]       = "#195240"; /* 当前活动的title字体颜色 */
 static const char col_cyan[]        = "#005577"; /* title底色 */
-static const unsigned int baralpha = 0x0;       /* 状态栏透明度 */
+static const unsigned int baralpha = 0x46;       /* 状态栏透明度 */
 static const unsigned int borderalpha = OPAQUE;  /* 边框透明度 */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
