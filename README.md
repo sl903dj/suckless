@@ -17,3 +17,9 @@ pacman -S i3lock-color
 chmod 755 lock.sh
 ```
 i3lock主题配置文件fork自gxt_kt<https://github.com/gxt-kt/dwm/blob/master/i3lock/lock.sh>
+
+## status2d
+使用status2d补丁配合xsetroot在dwmbar自定义显示系统相关信息，自定义脚本需要赋予755权限
+```shell
+chmod 755 dwmbar.sh
+```
