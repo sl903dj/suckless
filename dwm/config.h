@@ -7,7 +7,9 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 0;        /* vertical padding of bar */
-static const int sidepad            = 0;        /* horizontal padding of bar */
+static const int sidepad            = 1;        /* horizontal padding of bar */
+static const int overviewgappo      = 24;       /* overview时窗口与边缘的缝隙大小 */
+static const int overviewgappi      = 60;       /* overview时窗口与窗口的缝隙大小 */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -35,8 +37,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-//static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "󰣇", "", "󰘑", "󰈙", "󰕧", "󰎈", "󰅩", "", "󰬷" };
+static const char *tags[] = { "󰣇", "", "", "󰈙", "󰕧", "󰎈", "󰅩", "", "" };
 
 /* Lockfile */
 static char lockfile[] = "/tmp/dwm.lock";
@@ -56,6 +57,11 @@ static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] *
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+
+
+/* overviewlayouts */
+static const char *overviewtag = "OVERVIEW";
+static const Layout overviewlayout = { "舘",  overview };
 
 #include "layouts.c"
 static const Layout layouts[] = {
@@ -126,6 +132,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_q,      toggleoverview, {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
