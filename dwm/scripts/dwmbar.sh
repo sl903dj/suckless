@@ -42,11 +42,11 @@ dwm_battery () {
         fi
     else
         if [ "$STATUS" = "Discharging" ]; then
-            printf "󰂄 %s%% %s" "$CHARGE" #"$STATUS"
+            printf "󰂄 %s%%" "$CHARGE" #"$STATUS"
         elif [ "$STATUS" = "Not charging" ]; then
-            printf " 󰂄 %s%% %s" "$CHARGE" #"$STATUS"
+            printf " 󰂄 %s%%" "$CHARGE" #"$STATUS"
         else
-            printf " 󰁹 %s%% %s" "$CHARGE" #"$STATUS"
+            printf " 󰁹 %s%%" "$CHARGE" #"$STATUS"
         fi
 
     fi
@@ -108,6 +108,6 @@ orange="#D08770"
 darkblue="#7292b2"
 
 while true; do
-	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(print_mem) $(dwm_cpu) ^b$blue^^c$black^ $(dwm_network) ^c$black^^b$green^ $(dwm_alsa) [ $(dwm_battery)] ^b$pink^ $(dwm_date) ^b#81A1C1^"
+	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(print_mem) $(dwm_cpu) ^b$blue^^c$black^ $(dwm_network) ^c$black^^b$green^ $(dwm_alsa) $(dwm_battery) ^b$pink^ $(dwm_date) ^b#81A1C1^"
 	sleep 0.1
 done
