@@ -3,9 +3,9 @@
 dwm_date () {
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
-        printf "📆 %s" "$(date +"%d-%m-%y %H:%M")"
+        printf "📆 %s" "$(date +"%d-%m-%y %a %H:%M")"
     else
-        printf " %s" "$(date +"%d-%m-%y %a 󰥔 %H:%M")"
+        printf " %s" "$(date +"%y-%m-%d %a 󰥔 %H:%M")"
     fi
     printf "%s\n" "$SEP2"
 }
@@ -32,16 +32,18 @@ dwm_battery () {
     # Change BAT1 to whatever your battery is identified as. Typically BAT0 or BAT1
     CHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
     STATUS=$(cat /sys/class/power_supply/BAT0/status)
-    # full Discharging
+    # full Not charging Discharging
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
-        if [ "$STATUS" = "Charging" ]; then
+        if [ "$STATUS" = "Not charging" ]; then
             printf "🔌 %s%% %s" "$CHARGE" #"$STATUS"
         else
             printf "🔋 %s%% %s" "$CHARGE" #"$STATUS"
         fi
     else
-        if [ "$STATUS" = "Charging" ]; then
+        if [ "$STATUS" = "Discharging" ]; then
+            printf "󰂄 %s%% %s" "$CHARGE" #"$STATUS"
+        elif [ "$STATUS" = "Not charging" ]; then
             printf " 󰂄 %s%% %s" "$CHARGE" #"$STATUS"
         else
             printf "󰁹 %s%% %s" "$CHARGE" #"$STATUS"
@@ -99,6 +101,7 @@ darkblue="#7292b2"
 
 while true; do
 	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(print_mem) $(dwm_cpu) ^b$blue^^c$black^ $(dwm_network) ^c$black^^b$green^ $(dwm_alsa) [ $(dwm_battery)] ^b$pink^ $(dwm_date) ^b#81A1C1^"
+	sleep 1s
 done
 
 
