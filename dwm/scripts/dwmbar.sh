@@ -46,7 +46,7 @@ dwm_battery () {
         elif [ "$STATUS" = "Not charging" ]; then
             printf " 󰂄 %s%% %s" "$CHARGE" #"$STATUS"
         else
-            printf "󰁹 %s%% %s" "$CHARGE" #"$STATUS"
+            printf " 󰁹 %s%% %s" "$CHARGE" #"$STATUS"
         fi
 
     fi
@@ -55,8 +55,11 @@ dwm_battery () {
 
 dwm_alsa () {
     VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
+    VOLMUTE=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)\].*/\1/")
     printf "%s" "$SEP1"
-    if [ "$VOL" -eq 0 ]; then
+    if [ "$VOLMUTE" = "off" ]; then
+	printf "󰝟 %s%%" "$VOL"
+    elif [ "$VOL" -eq 0 ]; then
         printf "󰕿"
     elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
         printf "󰖀 %s%%" "$VOL"
@@ -106,7 +109,7 @@ darkblue="#7292b2"
 
 while true; do
 	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(print_mem) $(dwm_cpu) ^b$blue^^c$black^ $(dwm_network) ^c$black^^b$green^ $(dwm_alsa) [ $(dwm_battery)] ^b$pink^ $(dwm_date) ^b#81A1C1^"
-	sleep 1s
+	sleep 0.1
 done
 
 
