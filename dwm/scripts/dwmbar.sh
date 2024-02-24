@@ -11,19 +11,21 @@ dwm_date () {
 }
 
 dwm_network () {
-    CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
+    CONNAME=$(nmcli -a | grep 'wlp0s20f3' | awk 'NR==1{print $3}')
     if [ "$CONNAME" = "" ]; then
         CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
     fi
 
     PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
     PUBLIC=$(curl -s https://ipinfo.io/ip)
+    REGION=$(curl -s https://ipinfo.io/region)
+    CITY=$(curl -s https://ipinfo.io/city)
 
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         printf "🌐 %s %s | %s" "$CONNAME" "$PRIVATE" "$PUBLIC"
     else
-        printf "󰖩%s%s %s""$CONNAME"
+        printf "󰩟 %s|%s" "$PUBLIC" "$CITY"
     fi
     printf "%s\n" "$SEP2"
 }
