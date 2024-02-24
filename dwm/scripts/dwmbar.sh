@@ -17,10 +17,8 @@ dwm_network () {
     fi
 
     PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
-    PUBLIC=$(curl -s https://ipinfo.io/ip)
-    REGION=$(curl -s https://ipinfo.io/region)
-    CITY=$(curl -s https://ipinfo.io/city)
-
+    PUBLIC=$(curl -u bd76e54350f0ef: ipinfo.io | grep '"ip' | awk -F '\"' '{print $4}')
+    CITY=$(curl -u bd76e54350f0ef: ipinfo.io | grep '"city' | awk -F '\"' '{print $4}')
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         printf "🌐 %s %s | %s" "$CONNAME" "$PRIVATE" "$PUBLIC"
@@ -77,13 +75,18 @@ dwm_cpu(){
     read cpu a b c idle rest < /proc/stat
     total=$((a+b+c+idle))
     cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-    echo -e "󰧨  $cpu%"
+    echo -e "󰧨 $cpu%"
 }
 
 print_mem(){
-	memfree=$(($(grep -m1 'MemAvailable:' /proc/meminfo | awk '{print $2}') / 1024))
+    mem_total=$(cat /proc/meminfo | grep "MemTotal:"| awk '{print $2}')
+    mem_free=$(cat /proc/meminfo | grep "MemFree:"| awk '{print $2}')
+    mem_buffers=$(cat /proc/meminfo | grep "Buffers:"| awk '{print $2}')
+    mem_cached=$(cat /proc/meminfo | grep -w "Cached:"| awk '{print $2}')
+    men_usage_rate=$(((mem_total - mem_free - mem_buffers - mem_cached) * 100 / mem_total))
+    mem_text=$(echo $men_usage_rate | awk '{printf "%02d%", $1}')
 
-	echo -e " $memfree"
+    echo -e " $mem_text"
 }
 # 
 
