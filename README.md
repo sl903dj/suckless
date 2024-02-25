@@ -23,3 +23,5 @@ i3lock主题配置文件fork自gxt_kt<https://github.com/gxt-kt/dwm/blob/master/
 ```shell
 chmod 755 dwmbar.sh
 ```
+## overview
+全局预览功能fork自yaocccc<https://github.com/yaocccc/dwm>
