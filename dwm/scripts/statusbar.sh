@@ -44,9 +44,9 @@ dwm_battery () {
         if [ "$STATUS" = "Discharging" ]; then
             printf "󰂄 %s%%" "$CHARGE" #"$STATUS"
         elif [ "$STATUS" = "Not charging" ]; then
-            printf " 󰂄 %s%%" "$CHARGE" #"$STATUS"
+            printf " %s%%" "$CHARGE" #"$STATUS"
         else
-            printf " 󰁹 %s%%" "$CHARGE" #"$STATUS"
+            printf "󰁹 %s%%" "$CHARGE" #"$STATUS"
         fi
 
     fi
@@ -78,10 +78,10 @@ dwm_cpu(){
     read cpu a b c idle rest < /proc/stat
     total=$((a+b+c+idle))
     cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-    echo -e "󰧨 $cpu%"
+    echo -e "󰻠 $cpu%"
 }
 
-print_mem(){
+dwm_mem(){
     mem_total=$(cat /proc/meminfo | grep "MemTotal:"| awk '{print $2}')
     mem_free=$(cat /proc/meminfo | grep "MemFree:"| awk '{print $2}')
     mem_buffers=$(cat /proc/meminfo | grep "Buffers:"| awk '{print $2}')
@@ -89,7 +89,12 @@ print_mem(){
     men_usage_rate=$(((mem_total - mem_free - mem_buffers - mem_cached) * 100 / mem_total))
     mem_text=$(echo $men_usage_rate | awk '{printf "%d%", $1}')
 
-    echo -e " $mem_text"
+    echo -e "󰍛 $mem_text"
+}
+
+dwm_disk () {
+    disk_free=$(df -hl | awk 'NR==5{print $4}')
+    echo -e "󰨣 $disk_free"
 }
 # 
 
@@ -108,7 +113,7 @@ orange="#D08770"
 darkblue="#7292b2"
 
 while true; do
-	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(print_mem) $(dwm_cpu) ^b$blue^^c$black^ $(dwm_network) ^c$black^^b$green^ $(dwm_alsa) $(dwm_battery) ^b$pink^ $(dwm_date) ^b#81A1C1^"
+	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(dwm_mem) $(dwm_cpu) $(dwm_disk) ^b$blue^^c$black^ $(dwm_network) ^c$black^^b$green^ $(dwm_alsa) $(dwm_battery) ^b$pink^ $(dwm_date) ^b#81A1C1^"
 	sleep 0.1
 done
 
