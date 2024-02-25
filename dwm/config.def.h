@@ -29,11 +29,14 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+        [SchemeUnderline] = { "#7799AA", NULL, NULL }, 
+        [SchemeSelTag] = { "#eeeeee", "#333333", NULL },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+        [SchemeSelTag] = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
@@ -61,7 +64,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 /* overviewlayouts */
 static const char *overviewtag = "OVERVIEW";
-static const Layout overviewlayout = { "舘",  overview };
+static const Layout overviewlayout = { "",  overview };
 
 #include "layouts.c"
 static const Layout layouts[] = {

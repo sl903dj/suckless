@@ -486,7 +486,8 @@ arrangemon(Monitor *m)
         overviewlayout.arrange(m);
     } else {
         strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof m->ltsymbol);
-        m->lt[m->sellt]->arrange(m);
+       if (m->lt[m->sellt]->arrange)
+           m->lt[m->sellt]->arrange(m);
     }
 }
 
@@ -537,25 +538,25 @@ buttonpress(XEvent *e)
                 i = ~0;
                 if (ev->x > x)
                     i = LENGTH(tags);
-                } else {
-	            for(c = m->clients; c; c=c->next)
-		        occ |= c->tags;
-	            do {
-		        /* Do not reserve space for vacant tags */
-		        if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
-			    continue;
-		        x += TEXTW(tags[i]);
-		    } while (ev->x >= x && ++i < LENGTH(tags));
-	        }
-		if (i < LENGTH(tags)) {
-			click = ClkTagBar;
-			arg.ui = 1 << i;
-		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
-			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - TEXTW(stext) - getsystraywidth())
-			click = ClkStatusText;
-		else
-			click = ClkWinTitle;
+            } else {
+	        for(c = m->clients; c; c=c->next)
+		    occ |= c->tags;
+	        do {
+		    /* Do not reserve space for vacant tags */
+		    if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+			continue;
+		    x += TEXTW(tags[i]);
+		} while (ev->x >= x && ++i < LENGTH(tags));
+	    }
+            if (i < LENGTH(tags)) {
+                click = ClkTagBar;
+		arg.ui = 1 << i;
+	    } else if (ev->x < x + TEXTW(selmon->ltsymbol))
+		click = ClkLtSymbol;
+	    else if (ev->x > selmon->ww - TEXTW(stext) - getsystraywidth())
+		click = ClkStatusText;
+	    else
+		click = ClkWinTitle;
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
 		restack(selmon);
@@ -803,7 +804,6 @@ createmon(void)
 	m->gappx = gappx;
 	m->lt[0] = &layouts[0];
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
-	m->isoverview = 0;
 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
 	m->pertag = ecalloc(1, sizeof(Pertag));
 	m->pertag->curtag = m->pertag->prevtag = 1;
@@ -1015,7 +1015,15 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
-	for (i = 0; i < LENGTH(tags); i++) {
+        if (m->isoverview) {
+            w = TEXTW(overviewtag);
+            drw_setscheme(drw, scheme[SchemeSelTag]);
+            drw_text(drw, x, 0, w, bh, lrpad / 2, overviewtag, 0);
+            drw_setscheme(drw, scheme[SchemeUnderline]);
+            drw_rect(drw, x, bh - boxw, w + lrpad, boxw, 1, 0);
+            x += w;
+        } else {
+	    for (i = 0; i < LENGTH(tags); i++) {
 		/* Do not draw vacant tags */
 		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
 			continue;
@@ -1023,7 +1031,8 @@ drawbar(Monitor *m)
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		x += w;
-	}
+	    }
+        }
 	w = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
