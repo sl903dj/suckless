@@ -42,13 +42,29 @@ dwm_battery () {
         fi
     else
         if [ "$STATUS" = "Discharging" ]; then
-            printf "󰂄 %s%%" "$CHARGE" #"$STATUS"
+            if [ "$CHARGE" -gt 80 ] && ["$CHARGE" -le 100]; then
+		printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 30 ] && ["$CHARGE" -le 80 ]; then
+	        printf "󰁿 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 5 ] && ["$CHARGE" -le 30 ]; then
+	        printf "󰁻 %s%%" "$CHARGE" #"$STATUS"
+	    else
+                printf "󰂎 %s%%" "$CHARGE" #"$STATUS"
+	    fi
         elif [ "$STATUS" = "Not charging" ]; then
             printf "󱐤 %s%%" "$CHARGE" #"$STATUS"
         elif [ "$STATUS" = "Charging" ]; then
-            printf " %s%%" "$CHARGE" #"$STATUS"
+            if [ "$CHARGE" -le 5 ]; then
+		printf "󰂎 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 5 ] && ["$CHARGE" -le 30 ]; then
+	        printf "󰁻 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 30 ] && ["$CHARGE" -le 80 ]; then
+	        printf "󰁿 %s%%" "$CHARGE" #"$STATUS"
+	    else
+                printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
+	    fi
         else
-            printf " 󰁹 %s%%" "$CHARGE" #"$STATUS"
+            printf "󰁹 %s%%" "$CHARGE" #"$STATUS"
         fi
 
     fi
