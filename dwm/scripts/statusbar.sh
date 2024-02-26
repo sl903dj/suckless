@@ -42,28 +42,46 @@ dwm_battery () {
         fi
     else
         if [ "$STATUS" = "Discharging" ]; then
-            if [ "$CHARGE" -gt 80 ] && [ "$CHARGE" -le 100 ]; then
-		printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 50 ] && [ "$CHARGE" -le 80 ]; then
-	        printf "󰁾 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 30 ] && [ "$CHARGE" -le 50 ]; then
+            if [ "$CHARGE" -gt 90 ] && [ "$CHARGE" -le 100 ]; then
+		printf "󰂂 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 80 ] && [ "$CHARGE" -le 90 ]; then
+	        printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 70 ] && [ "$CHARGE" -le 80 ]; then
+	        printf "󰂀 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 60 ] && [ "$CHARGE" -le 70 ]; then
 	        printf "󰁿 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 5 ] && [ "$CHARGE" -le 30 ]; then
+	    elif [ "$CHARGE" -gt 50 ] && [ "$CHARGE" -le 60 ]; then
+	        printf "󰁾 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 40 ] && [ "$CHARGE" -le 50 ]; then
+	        printf "󰁽 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 30 ] && [ "$CHARGE" -le 40 ]; then
+	        printf "󰁼 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 20 ] && [ "$CHARGE" -le 30 ]; then
 	        printf "󰁻 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 10 ] && [ "$CHARGE" -le 20 ]; then
+	        printf "󰁺 %s%%" "$CHARGE" #"$STATUS"
 	    else
                 printf "󰂎 %s%%" "$CHARGE" #"$STATUS"
 	    fi
         elif [ "$STATUS" = "Not charging" ]; then
             printf "󱐤 %s%%" "$CHARGE" #"$STATUS"
         elif [ "$STATUS" = "Charging" ]; then
-            if [ "$CHARGE" -le 5 ]; then
+            if [ "$CHARGE" -le 10 ]; then
 		printf "󰂎 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 5 ] && [ "$CHARGE" -le 30 ]; then
+	    elif [ "$CHARGE" -gt 10 ] && [ "$CHARGE" -le 20 ]; then
 	        printf "󰁻 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 30 ] && [ "$CHARGE" -le 50 ]; then
+	    elif [ "$CHARGE" -gt 20 ] && [ "$CHARGE" -le 30 ]; then
+	        printf "󰁼 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 30 ] && [ "$CHARGE" -le 40 ]; then
+	        printf "󰁽 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 40 ] && [ "$CHARGE" -le 50 ]; then
 	        printf "󰁾 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 50 ] && [ "$CHARGE" -le 80 ]; then
+	    elif [ "$CHARGE" -gt 50 ] && [ "$CHARGE" -le 60 ]; then
 	        printf "󰁿 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 60 ] && [ "$CHARGE" -le 70 ]; then
+	        printf "󰂀 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 70 ] && [ "$CHARGE" -le 80 ]; then
+	        printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
 	    else
                 printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
 	    fi
@@ -135,6 +153,6 @@ orange="#D08770"
 darkblue="#7292b2"
 
 while true; do
-	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(dwm_mem) $(dwm_cpu) $(dwm_disk) ^b$blue^^c$black^ $(dwm_network) ^c$black^^b$green^ $(dwm_alsa) $(dwm_battery) ^b$pink^ $(dwm_date) ^b#81A1C1^"
-	sleep 0.1
+	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(dwm_mem) $(dwm_cpu) $(dwm_disk) ^b$pink^^c$black^ $(dwm_alsa) $(dwm_battery) ^c$black^^b$green^ $(dwm_date) ^b#81A1C1^"
+	sleep 1
 done
