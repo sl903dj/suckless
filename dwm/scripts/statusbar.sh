@@ -42,11 +42,13 @@ dwm_battery () {
         fi
     else
         if [ "$STATUS" = "Discharging" ]; then
-            if [ "$CHARGE" -gt 80 ] && ["$CHARGE" -le 100]; then
+            if [ "$CHARGE" -gt 80 ] && [ "$CHARGE" -le 100 ]; then
 		printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 30 ] && ["$CHARGE" -le 80 ]; then
+	    elif [ "$CHARGE" -gt 50 ] && [ "$CHARGE" -le 80 ]; then
+	        printf "󰁾 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 30 ] && [ "$CHARGE" -le 50 ]; then
 	        printf "󰁿 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 5 ] && ["$CHARGE" -le 30 ]; then
+	    elif [ "$CHARGE" -gt 5 ] && [ "$CHARGE" -le 30 ]; then
 	        printf "󰁻 %s%%" "$CHARGE" #"$STATUS"
 	    else
                 printf "󰂎 %s%%" "$CHARGE" #"$STATUS"
@@ -56,9 +58,11 @@ dwm_battery () {
         elif [ "$STATUS" = "Charging" ]; then
             if [ "$CHARGE" -le 5 ]; then
 		printf "󰂎 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 5 ] && ["$CHARGE" -le 30 ]; then
+	    elif [ "$CHARGE" -gt 5 ] && [ "$CHARGE" -le 30 ]; then
 	        printf "󰁻 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 30 ] && ["$CHARGE" -le 80 ]; then
+	    elif [ "$CHARGE" -gt 30 ] && [ "$CHARGE" -le 50 ]; then
+	        printf "󰁾 %s%%" "$CHARGE" #"$STATUS"
+	    elif [ "$CHARGE" -gt 50 ] && [ "$CHARGE" -le 80 ]; then
 	        printf "󰁿 %s%%" "$CHARGE" #"$STATUS"
 	    else
                 printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
