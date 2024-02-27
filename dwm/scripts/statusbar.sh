@@ -154,6 +154,6 @@ orange="#D08770"
 darkblue="#7292b2"
 
 while true; do
-	xsetroot -name "^c$black^^b$blue^ 󰣇 󰤼: ^b$green^ $(dwm_mem) $(dwm_cpu) $(dwm_disk) ^b$pink^^c$black^ $(dwm_alsa) $(dwm_battery) ^c$black^^b$green^ $(dwm_date) ^b#81A1C1^"
+	xsetroot -name "^c$black^^b$blue^ 󰤼: ^b$green^ $(dwm_mem) $(dwm_cpu) $(dwm_disk) ^b$pink^^c$black^ $(dwm_alsa) $(dwm_battery) ^c$black^^b$green^ $(dwm_date) ^b#81A1C1^"
 	sleep 1
 done
