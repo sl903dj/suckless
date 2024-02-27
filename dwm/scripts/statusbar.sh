@@ -30,65 +30,65 @@ dwm_network () {
 
 dwm_battery () {
     # Change BAT1 to whatever your battery is identified as. Typically BAT0 or BAT1
-    CHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
+    CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
     STATUS=$(cat /sys/class/power_supply/BAT0/status)
     # full Not charging Discharging
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         if [ "$STATUS" = "Not charging" ]; then
-            printf "🔌 %s%% %s" "$CHARGE" #"$STATUS"
+            printf "🔌 %s%% %s" "$CAPACITY" #"$STATUS"
         else
-            printf "🔋 %s%% %s" "$CHARGE" #"$STATUS"
+            printf "🔋 %s%% %s" "$CAPACITY" #"$STATUS"
         fi
     else
         if [ "$STATUS" = "Discharging" ]; then
-            if [ "$CHARGE" -gt 90 ] && [ "$CHARGE" -le 100 ]; then
-		printf "󰂂 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 80 ] && [ "$CHARGE" -le 90 ]; then
-	        printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 70 ] && [ "$CHARGE" -le 80 ]; then
-	        printf "󰂀 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 60 ] && [ "$CHARGE" -le 70 ]; then
-	        printf "󰁿 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 50 ] && [ "$CHARGE" -le 60 ]; then
-	        printf "󰁾 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 40 ] && [ "$CHARGE" -le 50 ]; then
-	        printf "󰁽 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 30 ] && [ "$CHARGE" -le 40 ]; then
-	        printf "󰁼 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 20 ] && [ "$CHARGE" -le 30 ]; then
-	        printf "󰁻 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 10 ] && [ "$CHARGE" -le 20 ]; then
-	        printf "󰁺 %s%%" "$CHARGE" #"$STATUS"
+            if [ "$CAPACITY" -gt 90 ] && [ "$CAPACITY" -le 100 ]; then
+		printf "󰂂 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 80 ] && [ "$CAPACITY" -le 90 ]; then
+	        printf "󰂁 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 70 ] && [ "$CAPACITY" -le 80 ]; then
+	        printf "󰂀 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 60 ] && [ "$CAPACITY" -le 70 ]; then
+	        printf "󰁿 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 50 ] && [ "$CAPACITY" -le 60 ]; then
+	        printf "󰁾 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 40 ] && [ "$CAPACITY" -le 50 ]; then
+	        printf "󰁽 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 30 ] && [ "$CAPACITY" -le 40 ]; then
+	        printf "󰁼 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 20 ] && [ "$CAPACITY" -le 30 ]; then
+	        printf "󰁻 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 10 ] && [ "$CAPACITY" -le 20 ]; then
+	        printf "󰁺 %s%%" "$CAPACITY" #"$STATUS"
 	    else
-                printf "󰂎 %s%%" "$CHARGE" #"$STATUS"
+                printf "󰂎 %s%%" "$CAPACITY" #"$STATUS"
 	    fi
         elif [ "$STATUS" = "Not charging" ]; then
-            printf "󱐤 %s%%" "$CHARGE" #"$STATUS"
+            printf "󱐤 %s%%" "$CAPACITY" #"$STATUS"
         elif [ "$STATUS" = "Charging" ]; then
-            if [ "$CHARGE" -le 10 ]; then
-		printf "󰂎 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 10 ] && [ "$CHARGE" -le 20 ]; then
-	        printf "󰁺 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 20 ] && [ "$CHARGE" -le 30 ]; then
-	        printf "󰁻 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 30 ] && [ "$CHARGE" -le 40 ]; then
-	        printf "󰁼 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 40 ] && [ "$CHARGE" -le 50 ]; then
-	        printf "󰁽 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 50 ] && [ "$CHARGE" -le 60 ]; then
-	        printf "󰁾 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 60 ] && [ "$CHARGE" -le 70 ]; then
-	        printf "󰁿 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 70 ] && [ "$CHARGE" -le 80 ]; then
-	        printf "󰂀 %s%%" "$CHARGE" #"$STATUS"
-	    elif [ "$CHARGE" -gt 80 ] && [ "$CHARGE" -le 90 ]; then
-	        printf "󰂁 %s%%" "$CHARGE" #"$STATUS"
+            if [ "$CAPACITY" -le 10 ]; then
+		printf "󰂎 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 10 ] && [ "$CAPACITY" -le 20 ]; then
+	        printf "󰁺 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 20 ] && [ "$CAPACITY" -le 30 ]; then
+	        printf "󰁻 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 30 ] && [ "$CAPACITY" -le 40 ]; then
+	        printf "󰁼 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 40 ] && [ "$CAPACITY" -le 50 ]; then
+	        printf "󰁽 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 50 ] && [ "$CAPACITY" -le 60 ]; then
+	        printf "󰁾 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 60 ] && [ "$CAPACITY" -le 70 ]; then
+	        printf "󰁿 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 70 ] && [ "$CAPACITY" -le 80 ]; then
+	        printf "󰂀 %s%%" "$CAPACITY" #"$STATUS"
+	    elif [ "$CAPACITY" -gt 80 ] && [ "$CAPACITY" -le 90 ]; then
+	        printf "󰂁 %s%%" "$CAPACITY" #"$STATUS"
 	    else
-                printf "󰂂 %s%%" "$CHARGE" #"$STATUS"
+                printf "󰂂 %s%%" "$CAPACITY" #"$STATUS"
 	    fi
         else
-            printf "󰁹 %s%%" "$CHARGE" #"$STATUS"
+            printf "󰁹 %s%%" "$CAPACITY" #"$STATUS"
         fi
 
     fi
@@ -130,7 +130,6 @@ dwm_mem(){
     mem_cached=$(cat /proc/meminfo | grep -w "Cached:"| awk '{print $2}')
     men_usage_rate=$(((mem_total - mem_free - mem_buffers - mem_cached) * 100 / mem_total))
     mem_text=$(echo $men_usage_rate | awk '{printf "%d%", $1}')
-
     echo -e "󰍛 $mem_text"
 }
 
