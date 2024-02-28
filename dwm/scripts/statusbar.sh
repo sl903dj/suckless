@@ -42,7 +42,9 @@ dwm_battery () {
         fi
     else
         if [ "$STATUS" = "Discharging" ]; then
-            if [ "$CAPACITY" -gt 90 ] && [ "$CAPACITY" -le 100 ]; then
+            if [ "$CAPACITY" -eq 100 ]; then
+		printf "󰁹 %s%%" "$CAPACITY" #"$STATUS"
+            elif [ "$CAPACITY" -gt 90 ] && [ "$CAPACITY" -le 100 ]; then
 		printf "󰂂 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 80 ] && [ "$CAPACITY" -le 90 ]; then
 	        printf "󰂁 %s%%" "$CAPACITY" #"$STATUS"
@@ -61,34 +63,35 @@ dwm_battery () {
 	    elif [ "$CAPACITY" -gt 10 ] && [ "$CAPACITY" -le 20 ]; then
 	        printf "󰁺 %s%%" "$CAPACITY" #"$STATUS"
 	    else
-                printf "󰂎 %s%%" "$CAPACITY" #"$STATUS"
+                printf "󱉞 %s%%" "$CAPACITY" #"$STATUS"
+		notify-send "没电了，赶紧充电啊！！！"
 	    fi
         elif [ "$STATUS" = "Not charging" ]; then
             printf "󱐤 %s%%" "$CAPACITY" #"$STATUS"
         elif [ "$STATUS" = "Charging" ]; then
             if [ "$CAPACITY" -le 10 ]; then
-		printf "󰂎 %s%%" "$CAPACITY" #"$STATUS"
+		printf "󰢟 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 10 ] && [ "$CAPACITY" -le 20 ]; then
-	        printf "󰁺 %s%%" "$CAPACITY" #"$STATUS"
+	        printf "󰢜 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 20 ] && [ "$CAPACITY" -le 30 ]; then
-	        printf "󰁻 %s%%" "$CAPACITY" #"$STATUS"
+	        printf "󰂆 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 30 ] && [ "$CAPACITY" -le 40 ]; then
-	        printf "󰁼 %s%%" "$CAPACITY" #"$STATUS"
+	        printf "󰂇 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 40 ] && [ "$CAPACITY" -le 50 ]; then
-	        printf "󰁽 %s%%" "$CAPACITY" #"$STATUS"
+	        printf "󰂈 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 50 ] && [ "$CAPACITY" -le 60 ]; then
-	        printf "󰁾 %s%%" "$CAPACITY" #"$STATUS"
+	        printf "󰢝 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 60 ] && [ "$CAPACITY" -le 70 ]; then
-	        printf "󰁿 %s%%" "$CAPACITY" #"$STATUS"
+	        printf "󰂉 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 70 ] && [ "$CAPACITY" -le 80 ]; then
-	        printf "󰂀 %s%%" "$CAPACITY" #"$STATUS"
+	        printf "󰢞 %s%%" "$CAPACITY" #"$STATUS"
 	    elif [ "$CAPACITY" -gt 80 ] && [ "$CAPACITY" -le 90 ]; then
-	        printf "󰂁 %s%%" "$CAPACITY" #"$STATUS"
+	        printf "󰂊 %s%%" "$CAPACITY" #"$STATUS"
 	    else
-                printf "󰂂 %s%%" "$CAPACITY" #"$STATUS"
+                printf "󰂋 %s%%" "$CAPACITY" #"$STATUS"
 	    fi
         else
-            printf "󰁹 %s%%" "$CAPACITY" #"$STATUS"
+            printf "󰂅 %s%%" "$CAPACITY" #"$STATUS"
         fi
 
     fi
