@@ -20,8 +20,8 @@ static const char *fonts[]          = { "Hack Nerd Font:style=Regular:size=10:an
 static const char dmenufont[]       = "Hack Nerd Font:style=Regular:size=10";
 static const char col_gray1[]       = "#000000"; /* 状态条底色 */
 static const char col_gray2[]       = "#444444"; /* 当static const unsigned int borderpx不为0时，非活动窗口外边框颜色 */
-static const char col_gray3[]       = "#333333"; /* 当前非活动的title字体颜色 */
-static const char col_gray4[]       = "#111111"; /* 当前活动的title字体颜色 */
+static const char col_gray3[]       = "#eeeeee"; /* 当前非活动的title字体颜色 */
+static const char col_gray4[]       = "#ffffff"; /* 当前活动的title字体颜色 */
 static const char col_cyan[]        = "#005577"; /* title底色 */
 static const unsigned int baralpha = 0x46;       /* 状态栏透明度 */
 static const unsigned int borderalpha = OPAQUE;  /* 边框透明度 */
