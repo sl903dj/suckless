@@ -25,3 +25,20 @@ chmod 755 statusbar.sh
 ```
 ## overview
 全局预览功能fork自yaocccc<https://github.com/yaocccc/dwm>
+
+## lunar-date
+添加农历显示，需要安装`lunar-date`
+```shell
+yay -S lunar-date
+```
+如果农历显示拼音，检查是否安装了`lunar-date.mo`文件:
+```shell
+/usr/share/locale/zh_CN/LC_MESSAGES/lunar-date.mo
+/usr/share/locale/zh_HK/LC_MESSAGES/lunar-date.mo
+/usr/share/locale/zh_TW/LC_MESSAGES/lunar-date.mo
+```
+并将luanr-date.mo文件复制到`/usr/share/locale/en_US/LC_MESSAGES`目录下
+```shell
+cp /usr/share/locale/zh_CN/LC_MESSAGES/lunar-date.mo /usr/share/locale/en_US/LC_MESSAGES
+```
+
