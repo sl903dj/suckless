@@ -6,7 +6,7 @@
 ~~```shell
 sed -i 's|static const char \*group = "nogroup";|static const char *group = "nobody";|' config.def.h
 sed -ri 's/((CPP|C|LD)FLAGS) =/\1 +=/g' config.mk~~
-``` 
+
 ## i3lock
 为使锁屏界面显示自定义脚本图案，需要安装`i3lock-color`
 ```shell
