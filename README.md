@@ -42,5 +42,5 @@ yay -S lunar-date
 ```shell
 cp /usr/share/locale/zh_CN/LC_MESSAGES/lunar-date.mo /usr/share/locale/en_US/LC_MESSAGES
 ```
-预览图
+# 预览图
 ![image](https://github.com/sl903dj/suckless/blob/overview/2024-03-04_15-35.png)
