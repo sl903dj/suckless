@@ -233,6 +233,7 @@ static void movemouse(const Arg *arg);
 static Client *nexttiled(Client *c);
 static void pop(Client *c);
 static void propertynotify(XEvent *e);
+static void pointerfocuswin(Client *c);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
@@ -1167,6 +1168,7 @@ focusmon(const Arg *arg)
 	unfocus(selmon->sel, 0);
 	selmon = m;
 	focus(NULL);
+	pointerfocuswin(NULL);
 }
 
 void
@@ -1193,6 +1195,16 @@ focusstack(const Arg *arg)
 		focus(c);
 		restack(selmon);
 	}
+}
+
+void
+pointerfocuswin(Client *c)
+{
+    if (c) {
+        XWarpPointer(dpy, None, root, 0, 0, 0, 0, c->x + c->w / 2, c->y + c->h / 2);
+        focus(c);
+    } else
+        XWarpPointer(dpy, None, root, 0, 0, 0, 0, selmon->wx + selmon->ww / 3, selmon->wy + selmon->wh / 2);
 }
 
 Atom
@@ -2308,6 +2320,7 @@ togglebar(const Arg *arg)
 		XConfigureWindow(dpy, systray->win, CWY, &wc);
 	}
 	arrange(selmon);
+	pointerfocuswin(selmon->sel);
 }
 
 void
@@ -2407,6 +2420,7 @@ toggleoverview(const Arg *arg)
     uint target = selmon->sel && selmon->sel->tags != TAGMASK ? selmon->sel->tags : selmon->seltags;
     selmon->isoverview ^= 1;
     view(&(Arg){ .ui = target });
+    pointerfocuswin(selmon->sel);
 }
 
 void
