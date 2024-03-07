@@ -2,7 +2,7 @@
 个人自用dmenu dwm slock slstatus st配置
 
 >更新一下分支说明
->- `master` 分支是最早期配置的，使用slstatus显示状态栏信息，alacritty作为默认终端，i3clock-color作为锁屏工具，已停止更新。
+>- `master` 分支是最早期配置的，使用slstatus显示状态栏信息，alacritty作为默认终端，i3clock-color作为锁屏工具，rofi作为程序选择器，已停止更新。
 >- `status2d` 分支使用status2d替换slstatus，搭配`dwm/scripts/statusbar.sh/`显示状态栏信息。
 >- `overview` 分支是在`status2d`分支上添加了全局预览功能，方便查看所有打开的程序，建议使用该分支。
 
