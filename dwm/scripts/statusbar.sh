@@ -2,7 +2,11 @@
 
 dwm_lunar () {
     printf "%s" "$SEP1"
-    printf "%s" "$(lunar-date | awk -F '年' 'NR == 2 {print $2}')"
+    if [ "$IDENTIFIER" = "unicode" ]; then
+        printf "🥮 %s" "$(lunar-date | awk -F '年' 'NR == 2 {print $2}')"
+    else
+        printf "%s" "$(lunar-date | awk -F '年' 'NR == 2 {print $2}')"
+    fi
     printf "%s\n" "$SEP2"
 }
 
@@ -11,7 +15,7 @@ dwm_date () {
     if [ "$IDENTIFIER" = "unicode" ]; then
         printf "📆 %s" "$(date +"%d-%m-%y %a %H:%M")"
     else
-        printf "󰃭 %s" "$(date +"%m/%d %a 󰥔 %H:%M")"
+        printf "󰃭 %s" "$(date +"%m/%d %a  %H:%M")"
     fi
     printf "%s\n" "$SEP2"
 }
@@ -71,7 +75,7 @@ dwm_battery () {
             else
                 printf "󱉞 %s%%" "$CAPACITY" #"$STATUS"
                 notify-send "没电了，赶紧充电啊！！！"
-	    fi
+            fi
         elif [ "$STATUS" = "Not charging" ]; then
             printf "󱐤 %s%%" "$CAPACITY" #"$STATUS"
         elif [ "$STATUS" = "Charging" ]; then
@@ -143,9 +147,8 @@ dwm_mem(){
 
 dwm_disk () {
     disk_free=$(df -hl | awk 'NR==5{print $4}')
-    echo -e " $disk_free"
+    echo -e " $disk_free"
 }
-# 
 
 black="#1e222a"
 white="#D8DEE9"
@@ -162,6 +165,6 @@ orange="#D08770"
 darkblue="#7292b2"
 
 while true; do
-	xsetroot -name "^c$black^^b$blue^ 󰤼: ^b$green^ $(dwm_mem) $(dwm_cpu) $(dwm_disk) ^b$pink^^c$black^ $(dwm_alsa) $(dwm_battery) ^c$black^^b$green^ $(dwm_date) $(dwm_lunar) ^b#81A1C1^"
-	sleep 1
+    xsetroot -name "^c$black^^b$blue^ 󰤼: ^b$green^ $(dwm_mem) $(dwm_cpu) $(dwm_disk) ^b$pink^^c$black^ $(dwm_alsa) $(dwm_battery) ^c$black^^b$green^ $(dwm_date) $(dwm_lunar) ^b#81A1C1^"
+    sleep 1
 done
