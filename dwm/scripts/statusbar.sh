@@ -147,7 +147,7 @@ dwm_mem(){
 
 dwm_disk () {
     disk_free=$(df -hl | awk 'NR==5{print $4}')
-    echo -e " $disk_free"
+    echo -e " $disk_free"
 }
 
 black="#1e222a"
