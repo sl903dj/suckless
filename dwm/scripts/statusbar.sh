@@ -27,8 +27,8 @@ dwm_network () {
     fi
 
     PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
-    PUBLIC=$(curl -u bd76e54350f0ef: ipinfo.io | grep '"ip' | awk -F '\"' '{print $4}')
-    CITY=$(curl -u bd76e54350f0ef: ipinfo.io | grep '"city' | awk -F '\"' '{print $4}')
+    PUBLIC=$(curl -u 'access token': ipinfo.io | grep '"ip' | awk -F '\"' '{print $4}')
+    CITY=$(curl -u 'access token': ipinfo.io | grep '"city' | awk -F '\"' '{print $4}')
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
         printf "🌐 %s %s | %s" "$CONNAME" "$PRIVATE" "$PUBLIC"
