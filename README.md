@@ -4,7 +4,8 @@
 >更新一下分支说明
 >- `master` 分支是最早期配置的，使用slstatus显示状态栏信息，alacritty作为默认终端，i3lock-color作为锁屏工具，rofi作为程序选择器，已停止更新。
 >- `status2d` 分支是在`master`分支上使用status2d替换slstatus，搭配`dwm/scripts/statusbar.sh/`显示状态栏信息。
->- `overview` 分支是在`status2d`分支上添加了全局预览功能，方便查看所有打开的程序，建议使用该分支。
+>- `overview` 分支是在`status2d`分支上添加了全局预览功能，方便查看所有打开的程序。
+>- `statuscmd` 分支实在`overview`分支上添加了statuscmd补丁，并换用[dmwblocks-async](https://github.com/UtkarshVerma/dwmblocks-async)显示状态栏信息。
 
 ## slock troubleshooting
 If you get this error `slock: getgrnam nogroup: group entry not found`, then you might want to apply this:
@@ -48,5 +49,5 @@ yay -S lunar-date
 cp /usr/share/locale/zh_CN/LC_MESSAGES/lunar-date.mo /usr/share/locale/en_US/LC_MESSAGES
 ```
 # 预览图
-![image](https://github.com/sl903dj/suckless/blob/overview/2024-03-08_15-47.png)
-![image](https://github.com/sl903dj/suckless/blob/overview/2024-03-08_15-49.png)
+![image](https://github.com/sl903dj/suckless/blob/statuscmd/2024-03-15_21-14.png)
+![image](https://github.com/sl903dj/suckless/blob/statuscmd/2024-03-15_21-15.png)
