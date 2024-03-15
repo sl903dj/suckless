@@ -1,0 +1,4 @@
+#!/bin/sh
+
+disk_free=$(df -hl | awk 'NR==5{print $4}')
+echo -e " $disk_free"
