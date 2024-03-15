@@ -4,6 +4,7 @@ printf "%s" "$SEP1"
 if [ "$IDENTIFIER" = "unicode" ]; then
     printf "📆 %s" "$(date +"%d-%m-%y %a %H:%M")"
 else
-    printf "󰃭 %s" "$(date +"%m/%d %a  %H:%M:%S")"
+    # printf "󰃭 %s" "$(date +"%m/%d %a  %H:%M:%S")"
+    printf "%s" "$(date +"%-m月%d日%A  %H:%M:%S")"
 fi
 printf "%s\n" "$SEP2"

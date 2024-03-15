@@ -24,7 +24,7 @@
     X("dwm_network", 500, 4) \
     X("dwm_volume", 1, 5) \
     X("dwm_battery", 1, 6)     \
-    X("dwm_date", 1, 7)  \
-    X("dwm_lunar", 1, 8)
+    X("dwm_lunar", 1, 7)  \
+    X("dwm_date", 1, 8)
 
 #endif  // CONFIG_H
