@@ -4,6 +4,7 @@
 CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
 STATUS=$(cat /sys/class/power_supply/BAT0/status)
 # full Not charging Discharging
+printf "%s" "$SEP1"
 if [ "$IDENTIFIER" = "unicode" ]; then
     if [ "$STATUS" = "Not charging" ]; then
         printf "🔌 %s%% %s" "$CAPACITY" #"$STATUS"
@@ -33,11 +34,11 @@ else
         elif [ "$CAPACITY" -gt 10 ] && [ "$CAPACITY" -le 20 ]; then
             printf "󰁺 %s%%" "$CAPACITY" #"$STATUS"
         else
-            printf " %s%%" "$CAPACITY" #"$STATUS"
+            printf "󱉞 %s%%" "$CAPACITY" #"$STATUS"
             notify-send "没电了，赶紧充电啊！！！"
         fi
     elif [ "$STATUS" = "Not charging" ]; then
-        printf "󱐤 %s%%" "$CAPACITY" #"$STATUS"
+        printf " %s%%" "$CAPACITY" #"$STATUS"
     elif [ "$STATUS" = "Charging" ]; then
         if [ "$CAPACITY" -le 10 ]; then
             printf "󰢟 %s%%" "$CAPACITY" #"$STATUS"
@@ -64,3 +65,4 @@ else
         printf "󰂅 %s%%" "$CAPACITY" #"$STATUS"
     fi
 fi
+printf "%s\n" "$SEP2"
