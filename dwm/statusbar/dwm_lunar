@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$IDENTIFIER" = "unicode" ]; then
+    printf "🥮 %s" "$(lunar-date | awk -F '年' 'NR == 2 {print $2}')"
+else
+    printf "%s" "$(lunar-date | awk -F '年' 'NR == 2 {print $2}')"
+fi
