@@ -17,7 +17,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray             = 1;   /* 0 means no systray */
 static const char *fonts[]          = { "Hack Nerd Font:style=Regular:size=10:antialias=true:autohint=true",
                                         "WenQuanYi Micro Hei:style=Regular:size=10:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Hack Nerd Font:style=Regular:size=10";
+static const char dmenufont[]       = "Hack Nerd Font:style=Regular:sirze=10";
 static const char col_gray1[]       = "#000000"; /* 状态条底色 */
 static const char col_gray2[]       = "#444444"; /* 当static const unsigned int borderpx不为0时，非活动窗口外边框颜色 */
 static const char col_gray3[]       = "#eeeeee"; /* 当前非活动的title字体颜色 */
