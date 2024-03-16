@@ -15,7 +15,7 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray             = 1;   /* 0 means no systray */
-static const char *fonts[]          = { "Hack Nerd Font:style=Regular:size=10:antialias=true:autohint=true",
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style=Regular:size=10:antialias=true:autohint=true",
                                         "WenQuanYi Micro Hei:style=Regular:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hack Nerd Font:style=Regular:sirze=10";
 static const char col_gray1[]       = "#000000"; /* 状态条底色 */
