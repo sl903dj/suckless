@@ -6,17 +6,17 @@ static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 2;        /* vertical padding of bar */
-static const int sidepad            = 2;        /* horizontal padding of bar */
+static const int vertpad            = 0;        /* vertical padding of bar */
+static const int sidepad            = 0;        /* horizontal padding of bar */
 static const int overviewgappo      = 24;       /* overview时窗口与边缘的缝隙大小 */
 static const int overviewgappi      = 60;       /* overview时窗口与窗口的缝隙大小 */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 1;   /* systray spacing */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray             = 1;   /* 0 means no systray */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:style=Regular:size=9:antialias=true:autohint=true",
-                                        "WenQuanYi Micro Hei:style=Regular:size=9:antialias=true:autohint=true" };
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style=Regular:size=10:antialias=true:autohint=true",
+                                        "WenQuanYi Micro Hei:style=Regular:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hack Nerd Font:style=Regular:sirze=10";
 static const char col_gray1[]       = "#000000"; /* 状态条底色 */
 static const char col_gray2[]       = "#444444"; /* 当static const unsigned int borderpx不为0时，非活动窗口外边框颜色 */
