@@ -23,7 +23,7 @@ pacman -S i3lock-color
 ```shell
 chmod 755 lock.sh
 ```
-i3lock主题配置文件fork自gxt_kt<https://github.com/gxt-kt/dwm/blob/master/i3lock/lock.sh>
+i3lock主题配置文件fork自[gxt_kt](https://github.com/gxt-kt/dwm/blob/master/i3lock/lock.sh)
 
 ## status2d
 使用status2d补丁配合xsetroot在statusbar自定义显示系统相关信息，自定义脚本需要赋予755权限
@@ -31,7 +31,7 @@ i3lock主题配置文件fork自gxt_kt<https://github.com/gxt-kt/dwm/blob/master/
 chmod 755 statusbar.sh
 ```
 ## overview
-全局预览功能fork自yaocccc<https://github.com/yaocccc/dwm>
+全局预览功能fork自[yaocccc](https://github.com/yaocccc/dwm)
 
 ## lunar-date
 添加农历显示，需要安装`lunar-date`
